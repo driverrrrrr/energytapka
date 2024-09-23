@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тапалка с монеткой</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: -webkit-linear-gradient(0deg, rgb(0, 0, 0), rgb(106, 22, 176) 100%);
+            background: -moz-linear-gradient(0deg, rgb(0, 0, 0), rgb(106, 22, 176) 100%);
+            background: linear-gradient(0deg, rgb(0, 0, 0), rgb(106, 22, 176) 100%);
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        #counter {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        #energy {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+        #coin {
+            width: 150px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        #coin:hover {
+            transform: scale(1.1);
+        }
+        #shop-button {
+            margin-top: 20px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        #shop-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="counter">Очки: 0</div>
+    <div id="energy">Энергия: <span id="energyValue">2000</span></div>
+    <img id="coin" src="monetka.png" alt="Монетка">
+    <img id="shop-button" src="shop.png" alt="Магазин">
+
+    <script>
+        let score = 0;
+        let energy = 2000;
+
+        const counterDisplay = document.getElementById('counter');
+        const energyDisplay = document.getElementById('energyValue');
+        const coinImage = document.getElementById('coin');
+        const shopButton = document.getElementById('shop-button');
+
+        // Функция для восстановления энергии
+        function restoreEnergy() {
+            if (energy < 2000) {
+                energy++;
+                energyDisplay.textContent = energy;
+            }
+        }
+
+        // Восстанавливаем энергию каждые 5 секунд
+        setInterval(restoreEnergy, 5000);
+
+        coinImage.addEventListener('click', () => {
+            if (energy >= 1) {
+                score++;
+                energy--;
+                counterDisplay.textContent = `Очки: ${score}`;
+                energyDisplay.textContent = energy;
+            } else {
+                alert('Недостаточно энергии для тапа!');
+            }
+        });
+
+        // Клик по кнопке магазина перенаправляет на страницу магазина
+        shopButton.addEventListener('click', () => {
+            window.location.href = "shop.html"; // Перенаправляем на страницу магазина
+        });
+    </script>
+
+</body>
+</html>

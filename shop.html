@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин улучшений</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: -webkit-linear-gradient(0deg, rgb(0, 0, 0), rgb(106, 22, 176) 100%);
+            background: -moz-linear-gradient(0deg, rgb(0, 0, 0), rgb(106, 22, 176) 100%);
+            background: linear-gradient(0deg, rgb(0, 0, 0), rgb(106, 22, 176) 100%);
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .shop-item {
+            background-color: #6a16b0;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        .shop-item:hover {
+            transform: scale(1.1);
+        }
+        #back-button {
+            margin-top: 20px;
+            background-color: #ffffff;
+            padding: 10px 20px;
+            color: black;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        #back-button:hover {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Магазин улучшений</h1>
+    
+    <div class="shop-item">Улучшение 1: +1 монета за клик (Цена: 100 очков)</div>
+    <div class="shop-item">Улучшение 2: Ускорение восстановления энергии (Цена: 200 очков)</div>
+
+    <div id="back-button">Вернуться назад</div>
+
+    <script>
+        // Кнопка возврата на главную страницу
+        document.getElementById('back-button').addEventListener('click', () => {
+            window.location.href = "index.html"; // Возвращаемся на главную страницу
+        });
+
+        // Пример обработки покупки (здесь можно добавить свою логику для покупки)
+        const shopItems = document.querySelectorAll('.shop-item');
+        shopItems.forEach(item => {
+            item.addEventListener('click', () => {
+                alert('Улучшение куплено!');
+                // Здесь можно добавить логику для уменьшения очков и применения улучшений
+            });
+        });
+    </script>
+
+</body>
+</html>
